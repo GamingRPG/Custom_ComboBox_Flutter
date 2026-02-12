@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Custom ComboBox Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF6A5ACD)), // Slate Blue
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Custom ComboBox Demo Home Page'),

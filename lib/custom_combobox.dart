@@ -220,10 +220,27 @@ class _CustomComboBoxState<T> extends State<CustomComboBox<T>> with WidgetsBindi
             enabled: widget.enabled,
             decoration: InputDecoration(
               hintText: widget.hintText ?? 'Select an option',
+              hintStyle: TextStyle(color: Colors.grey[500]),
+              filled: true,
+              fillColor: Colors.grey[50],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Color(0xFF6A5ACD), width: 2), // Slate Blue
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: Colors.grey[300]!, width: 1),
+              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               suffixIcon: IconButton(
-                icon: Icon(_isDropdownVisible 
-                    ? Icons.arrow_drop_up 
-                    : Icons.arrow_drop_down),
+                icon: Icon(_isDropdownVisible
+                    ? Icons.arrow_drop_up
+                    : Icons.arrow_drop_down,
+                    color: Color(0xFF6A5ACD)), // Slate Blue
                 onPressed: () {
                   if (_isDropdownVisible) {
                     _hideDropdown();
@@ -249,37 +266,50 @@ class _CustomComboBoxState<T> extends State<CustomComboBox<T>> with WidgetsBindi
           CompositedTransformFollower(
             link: _layerLink,
             showWhenUnlinked: false,
-            offset: const Offset(0.0, 50.0), // Position the dropdown below the input field
+            offset: const Offset(0.0, 55.0), // Position the dropdown below the input field
             child: Material(
               elevation: 4,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(12),
+              shadowColor: Colors.black.withOpacity(0.2),
               child: Container(
                 width: 300, // Match the width of the input field
                 constraints: BoxConstraints(
                   maxHeight: widget.maxHeight,
                 ),
-                child: ListView.builder(
-                  itemCount: _filteredItems.length,
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(), // Prevent overscroll
-                  itemBuilder: (context, index) {
-                    bool isSelected = _selectedIndex == index;
-                    return InkWell(
-                      onTap: () => _selectItem(index),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: isSelected ? Theme.of(context).highlightColor : Colors.transparent,
-                        ),
-                        child: Text(
-                          widget.itemToString(_filteredItems[index]),
-                          style: TextStyle(
-                            color: isSelected ? Colors.white : null,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.grey[300]!, width: 1),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: ListView.builder(
+                    itemCount: _filteredItems.length,
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(), // Prevent overscroll
+                    itemBuilder: (context, index) {
+                      bool isSelected = _selectedIndex == index;
+                      return InkWell(
+                        onTap: () => _selectItem(index),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          decoration: BoxDecoration(
+                            color: isSelected 
+                                ? Color(0xFF6A5ACD) // Slate Blue
+                                : Colors.white,
+                          ),
+                          child: Text(
+                            widget.itemToString(_filteredItems[index]),
+                            style: TextStyle(
+                              color: isSelected 
+                                  ? Colors.white 
+                                  : Colors.black87,
+                              fontSize: 16,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
