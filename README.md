@@ -2,7 +2,7 @@
 
 A customizable, generic combobox widget with search functionality and keyboard navigation for Flutter projects.
 
-This widget was enhanced using an AI model to improve its UI design and user experience. The project is open source and available for anyone to use, modify, and contribute to.
+This widget was created using an AI model. The project is open source and available for anyone to use, modify, and contribute to.
 
 ## Features
 
@@ -121,4 +121,4 @@ The widget follows Material Design guidelines and adapts to your app's theme. Yo
 
 ## Contributing
 
-This project is completely open source and welcomes contributions from anyone interested in improving it. Feel free to submit issues, fork the repository, or submit pull requests if you find any problems or have suggestions for improvements. Since this widget was enhanced using an AI model, we encourage collaborative development and welcome ideas from developers of all experience levels.
+This project is completely open source and welcomes contributions from anyone interested in improving it. Feel free to submit issues, fork the repository, or submit pull requests if you find any problems or have suggestions for improvements. Since this widget was created using an AI model, we encourage collaborative development and welcome ideas from developers of all experience levels.
